@@ -21,13 +21,13 @@ export default class App extends React.Component {
 
   handleNoteViewIndex = inputId => {
     for (let i = 0; i < this.state.notes.length; i++) {
-      if (this.state.notes[i].id === inputId) this.noteIndex = i;
+      if (this.state.notes[i]._id === inputId) this.noteIndex = i;
     };
   };
 
   handleCreateNote = inputNote => {
     const newNote = {
-      id: this.nextId++,
+      _id: this.nextId++,
       title: inputNote.title,
       body: inputNote.body,
     };
@@ -57,7 +57,7 @@ export default class App extends React.Component {
 
   handleEditNote = inputNote => {
     const editedNote = {
-      id: inputNote.id,
+      _id: inputNote.id,
       title: inputNote.title,
       body: inputNote.body,
     };
