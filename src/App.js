@@ -29,7 +29,7 @@ export default class App extends React.Component {
     const newNote = {
       id: this.nextId++,
       title: inputNote.title,
-      body: inputNote.body,
+      body: inputNote.content,
     };
     const newNotes = [...this.state.notes, newNote];
     console.log('handlecreatenote')
@@ -40,7 +40,7 @@ export default class App extends React.Component {
     .then(response => {
       console.log(response);
       this.setState({
-        notes: newNote
+        notes: newNotes
       });
     })
     .catch(err => {
