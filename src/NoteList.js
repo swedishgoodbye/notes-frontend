@@ -33,7 +33,7 @@ export default class NoteList extends React.Component {
   };
 
   componentWillMount() {
-    if(this.state.notes.length > 0) {
+    if(this.props.notes.length > 0) {
       this.boolEmptyNotes = false;
     } else {
       this.boolEmptyNotes = true;
