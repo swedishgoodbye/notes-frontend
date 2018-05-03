@@ -8,7 +8,7 @@ import "./CreateNote.css";
 export default class CreateNote extends React.Component {
   state = {
     title: '',
-    body: '',
+    content: '',
   };
 
   handleInputChange = event => {
@@ -16,29 +16,29 @@ export default class CreateNote extends React.Component {
   };
 
   handleSubmit = _ => {
-    const { title, body } = this.state;
-    // this.props.createNote({ title, body });
-    // this.setState({ title: '', body: '', });
+    const { title, content } = this.state;
+    this.props.createNote({ title, content });
+    // this.setState({ title: '', content: '', });
     console.log('submit')
     axios
     .post('https://peaceful-meadow-91763.herokuapp.com/new')
     .then(response => {
       console.log(response);
-      // this.props.createNote({ title, body });
-      this.setState({ title: '', body: '', });
+      // this.props.createNote({ title, content });
+      this.setState({ title: '', content: '', });
     })
     .catch(err => {
       console.log({err: 'handleSubmit error in CreateNote component'})
     })
 
-    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-    .then(response => {
-      this.setState({ notes: response.data })
-    })
+    // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
+    // .then(response => {
+    //   this.setState({ notes: response.data })
+    // })
   };
 
   render() {
-    const { title, body } = this.state;
+    const { title, content } = this.state;
     return (
       <div className="CreateNote">
         <h2 className="SectionTitle">Create New Note:</h2>
@@ -56,8 +56,8 @@ export default class CreateNote extends React.Component {
           <br />
           <textarea
             className="CreateNote-BodyBox"
-            value={body}
-            name="body"
+            value={content}
+            name="content"
             type="text"
             placeholder="Note Content"
             onChange={this.handleInputChange}

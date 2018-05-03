@@ -16,7 +16,7 @@ const SortableList = SortableContainer(props => {
           note={note}
           index={index}
           title={note.title}
-          body={note.body}
+          content={note.content}
           handleNoteIndex={props.handleNoteIndex}
         />
       );
@@ -31,6 +31,15 @@ export default class NoteList extends React.Component {
   state = {
     notes: this.props.notes,
   };
+
+  componentDidMount(){
+    axios
+    .get('https://peaceful-meadow-91763.herokuapp.com/')
+    .then(response =>{
+      this.setState(() => {notes: response.data})
+    })
+
+  }
 
   componentWillMount() {
     if(this.state.notes.length > 0) {
