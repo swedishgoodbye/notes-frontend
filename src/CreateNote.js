@@ -18,18 +18,18 @@ export default class CreateNote extends React.Component {
   handleSubmit = _ => {
     const { title, content } = this.state;
     this.props.createNote({ title, content });
-    // this.setState({ title: '', content: '', });
+    this.setState({ title: '', content: '', });
     console.log('submit')
-    axios
-    .post('https://peaceful-meadow-91763.herokuapp.com/new')
-    .then(response => {
-      console.log(response);
-      // this.props.createNote({ title, content });
-      this.setState({ title: '', content: '', });
-    })
-    .catch(err => {
-      console.log({err: 'handleSubmit error in CreateNote component'})
-    })
+    // axios
+    // .post('https://peaceful-meadow-91763.herokuapp.com/new')
+    // .then(response => {
+    //   console.log(response);
+    //   // this.props.createNote({ title, content });
+    //   this.setState({ title: '', content: '', });
+    // })
+    // .catch(err => {
+    //   console.log({err: 'handleSubmit error in CreateNote component'})
+    // })
 
     // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
     // .then(response => {
