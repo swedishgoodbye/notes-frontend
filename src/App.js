@@ -33,7 +33,7 @@ export default class App extends React.Component {
     };
     const newNotes = [...this.state.notes, newNote];
 
-    axios
+    // axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
     // .then(response => {
     //   console.log(response);
@@ -49,7 +49,7 @@ export default class App extends React.Component {
 
 
     
-    const newNotes = [...this.state.notes, newNote];
+    // const newNotes = [...this.state.notes, newNote];
     this.setState({
       notes: newNotes,
     });
