@@ -115,14 +115,14 @@ export default class App extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   axios
-  //   .get('https://peaceful-meadow-91763.herokuapp.com/')
-  //   .then(response =>{
-  //     this.setState(() => {notes: response.data})
-  //   })
+  componentDidMount(){
+    axios
+    .get('http://localhost:5000/')
+    .then(response =>{
+      this.setState(() => {notes: response.data})
+    })
 
-  // }
+  }
 
 
   render() {
