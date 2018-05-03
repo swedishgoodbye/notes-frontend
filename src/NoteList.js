@@ -25,12 +25,14 @@ export default class NoteList extends React.Component {
     return (
       <div className="YourNotes">
         <h2 className="SectionTitle">Your Notes:</h2>
+        <div>
         {this.props.notes.map(note => {
-          <div>
+         return ( <div>
           <div>{note.title}</div>
           <div>{note.content}</div>
-          </div>
-        })}
+         </div> 
+        )})}
+        </div>
       </div>
     );
   };
