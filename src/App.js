@@ -21,7 +21,7 @@ export default class App extends React.Component {
 
   handleNoteViewIndex = inputId => {
     for (let i = 0; i < this.state.notes.length; i++) {
-      if (this.state.notes[i]._id === inputId) this.noteIndex = i;
+      if (this.state.notes[i].id === inputId) this.noteIndex = i;
     };
   };
 
@@ -63,7 +63,7 @@ export default class App extends React.Component {
 
   handleEditNote = inputNote => {
     const editedNote = {
-      _id: inputNote.id,
+      id: inputNote.id,
       title: inputNote.title,
       body: inputNote.body,
     };
@@ -132,8 +132,8 @@ export default class App extends React.Component {
           <Sidebar />
           <Route exact path={"/"} render={() => <NoteList notes={this.state.notes} handleNoteViewIndex={this.handleNoteViewIndex} updateSortedNotes={this.updateSortedNotes}/>} />
           <Route exact path={"/new"} render={() => <CreateNote createNote={this.handleCreateNote} />} />
-          <Route exact path={"/:_id"} render={() => <NoteView note={this.state.notes[this.noteIndex]} toggleModal={this.toggleModal} handleDeleteNote={this.handleDeleteNote} />} />
-          <Route exact path={"/edit/:_id"} render={() => <EditNote note={this.state.notes[this.noteIndex]} handleEditNote={this.handleEditNote} />} />
+          <Route exact path={"/:id"} render={() => <NoteView note={this.state.notes[this.noteIndex]} toggleModal={this.toggleModal} handleDeleteNote={this.handleDeleteNote} />} />
+          <Route exact path={"/edit/:id"} render={() => <EditNote note={this.state.notes[this.noteIndex]} handleEditNote={this.handleEditNote} />} />
         </div>
       </Router>
     );
