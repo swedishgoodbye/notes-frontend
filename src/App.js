@@ -43,7 +43,7 @@ export default class App extends React.Component {
       });
     })
     .catch(err => {
-      res.json({err: 'Error in handleCreateNote'})
+      console.log({err: 'handleCreateNote error in App component'})
     })
 
     axios.get('https://peaceful-meadow-91763.herokuapp.com/')
