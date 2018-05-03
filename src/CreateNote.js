@@ -28,7 +28,7 @@ export default class CreateNote extends React.Component {
       this.setState({ title: '', body: '', });
     })
     .catch(err => {
-      res.json({err: 'Error in CreateNote component.'})
+      console.log({err: 'handleSubmit error in CreateNote component'})
     })
 
     axios.get('https://peaceful-meadow-91763.herokuapp.com/')
