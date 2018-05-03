@@ -35,7 +35,8 @@ export default class App extends React.Component {
     console.log('handlecreatenote')
 
     axios
-    .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
+    // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
+    .post('http://localhost:5000/new', newNote)
     .then(response => {
       console.log(response);
       this.setState({
@@ -46,7 +47,8 @@ export default class App extends React.Component {
       console.log({err: 'handleCreateNote error in App component'})
     })
 
-    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
+    // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
+    axios.get('http://localhost:5000/')
     .then(response => {
       this.setState({ notes: response.data })
     })
@@ -113,14 +115,14 @@ export default class App extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   axios
-  //   .get('https://peaceful-meadow-91763.herokuapp.com/')
-  //   .then(response =>{
-  //     this.setState(() => {notes: response.data})
-  //   })
+  componentDidMount(){
+    axios
+    .get('https://peaceful-meadow-91763.herokuapp.com/')
+    .then(response =>{
+      this.setState(() => {notes: response.data})
+    })
 
-  // }
+  }
 
 
   render() {
