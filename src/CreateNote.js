@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 import "./CreateNote.css";
 
 export default class CreateNote extends React.Component {
@@ -15,8 +17,20 @@ export default class CreateNote extends React.Component {
 
   handleSubmit = _ => {
     const { title, body } = this.state;
-    this.props.createNote({ title, body });
-    this.setState({ title: '', body: '', });
+    // this.props.createNote({ title, body });
+    // this.setState({ title: '', body: '', });
+    axios
+    .post('https://peaceful-meadow-91763.herokuapp.com/new')
+    .then(response => {
+      console.log(response);
+      this.props.createNote({ title, body });
+      this.setState({ title: '', body: '', });
+    })
+
+    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
+    .then(response => {
+      this.setState({ notes: response.data })
+    })
   };
 
   render() {

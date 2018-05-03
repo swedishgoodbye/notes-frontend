@@ -31,14 +31,14 @@ export default class App extends React.Component {
       title: inputNote.title,
       body: inputNote.body,
     };
-    const newNotes = [...this.state.notes, newNote];
+    // const newNotes = [...this.state.notes, newNote];
 
     axios
     .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
     .then(response => {
       console.log(response);
       this.setState({
-        notes: newNotes
+        notes: newNote
       });
     })
 
