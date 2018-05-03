@@ -29,7 +29,7 @@ export default class App extends React.Component {
     const newNote = {
       id: this.nextId++,
       title: inputNote.title,
-      body: inputNote.content,
+      content: inputNote.content,
     };
     const newNotes = [...this.state.notes, newNote];
     console.log('handlecreatenote')
