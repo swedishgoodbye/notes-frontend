@@ -32,27 +32,31 @@ export default class App extends React.Component {
       body: inputNote.body,
     };
     const newNotes = [...this.state.notes, newNote];
+    console.log('handlecreatenote')
 
-    // axios
-    // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-    // .then(response => {
-    //   console.log(response);
-    //   this.setState({
-    //     notes: newNote
-    //   });
-    // })
+    axios
+    .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
+    .then(response => {
+      console.log(response);
+      this.setState({
+        notes: newNote
+      });
+    })
+    .catch(err => {
+      res.json({err: 'Error in handleCreateNote'})
+    })
 
-    // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-    // .then(response => {
-    //   this.setState({ notes: response.data })
-    // })
+    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
+    .then(response => {
+      this.setState({ notes: response.data })
+    })
 
 
     
     // const newNotes = [...this.state.notes, newNote];
-    this.setState({
-      notes: newNotes,
-    });
+    // this.setState({
+    //   notes: newNotes,
+    // });
   };
 
   handleEditNote = inputNote => {

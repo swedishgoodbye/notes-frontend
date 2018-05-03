@@ -19,12 +19,16 @@ export default class CreateNote extends React.Component {
     const { title, body } = this.state;
     // this.props.createNote({ title, body });
     // this.setState({ title: '', body: '', });
+    console.log('submit')
     axios
     .post('https://peaceful-meadow-91763.herokuapp.com/new')
     .then(response => {
       console.log(response);
-      this.props.createNote({ title, body });
+      // this.props.createNote({ title, body });
       this.setState({ title: '', body: '', });
+    })
+    .catch(err => {
+      res.json({err: 'Error in CreateNote component.'})
     })
 
     axios.get('https://peaceful-meadow-91763.herokuapp.com/')
