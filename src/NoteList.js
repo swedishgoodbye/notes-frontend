@@ -63,6 +63,9 @@ export default class NoteList extends React.Component {
         {/* {!this.boolEmptyNotes ? ( */}
           <CSVLink className="YourNotes-CSV" data={this.state.notes} filename={"lambda-notes.csv"}>Download CSV</CSVLink>
         {/* // ) : (null)} */}
+        {this.props.notes.map(note =>{
+          <div>{...note}</div>
+        })}
       </div>
     );
   };
