@@ -31,28 +31,28 @@ export default class App extends React.Component {
       title: inputNote.title,
       body: inputNote.body,
     };
-    // const newNotes = [...this.state.notes, newNote];
+    const newNotes = [...this.state.notes, newNote];
 
     axios
-    .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-    .then(response => {
-      console.log(response);
-      this.setState({
-        notes: newNote
-      });
-    })
+    // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
+    // .then(response => {
+    //   console.log(response);
+    //   this.setState({
+    //     notes: newNote
+    //   });
+    // })
 
-    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-    .then(response => {
-      this.setState({ notes: response.data })
-    })
+    // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
+    // .then(response => {
+    //   this.setState({ notes: response.data })
+    // })
 
 
     
-    // const newNotes = [...this.state.notes, newNote];
-    // this.setState({
-    //   notes: newNotes,
-    // });
+    const newNotes = [...this.state.notes, newNote];
+    this.setState({
+      notes: newNotes,
+    });
   };
 
   handleEditNote = inputNote => {
@@ -125,7 +125,7 @@ export default class App extends React.Component {
         <div className="App">
           <Sidebar />
           <Route exact path={"/"} render={() => <NoteList notes={this.state.notes} handleNoteViewIndex={this.handleNoteViewIndex} updateSortedNotes={this.updateSortedNotes}/>} />
-          <Route exact path={"/notes/new"} render={() => <CreateNote createNote={this.handleCreateNote} />} />
+          <Route exact path={"/new"} render={() => <CreateNote createNote={this.handleCreateNote} />} />
           <Route exact path={"/:_id"} render={() => <NoteView note={this.state.notes[this.noteIndex]} toggleModal={this.toggleModal} handleDeleteNote={this.handleDeleteNote} />} />
           <Route exact path={"/edit/:_id"} render={() => <EditNote note={this.state.notes[this.noteIndex]} handleEditNote={this.handleEditNote} />} />
         </div>
