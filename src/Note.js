@@ -7,7 +7,7 @@ import "./Note.css";
 
 const Note = SortableElement(props => {
   return (
-    <Link to={"/:_id"} onClick={() => {props.handleNoteIndex(props.note.id)}}>
+    <Link to={"/:id"} onClick={() => {props.handleNoteIndex(props.note.id)}}>
       <li className="Note">
         <div className="Note-NoteTitle">
           <h2>{props.note.title}</h2> <br />
