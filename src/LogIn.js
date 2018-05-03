@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default class LogIn extends React.Component {
+export default class Login extends React.Component {
     state = {
       username: '',
       password: '',
@@ -22,11 +22,11 @@ export default class LogIn extends React.Component {
     render() {
         const { username, password } = this.state;
         return (
-            <div className='LogIn'>
+            <div className='Login'>
                 <h3 className='RegTitle'>Enter Your Username and Password To Login:</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input
-                    className='LogIn-Username'
+                    className='Login-Username'
                     value={username}
                     name='username'
                     type='text'
@@ -36,7 +36,7 @@ export default class LogIn extends React.Component {
                     />
                     <br />
                     <input
-                    className='LogIn-Password'
+                    className='Login-Password'
                     value={password}
                     name='password'
                     type='text'
