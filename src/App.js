@@ -14,11 +14,9 @@ import './App.css';
 export default class App extends React.Component {
   nextId = 0;
   noteIndex = 0;
-  nextUserId = 0;
 
   state = {
     notes: [],
-    users:[]
   };
 
   handleNoteViewIndex = inputId => {
@@ -38,7 +36,7 @@ export default class App extends React.Component {
 
     axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-    .post('http://aqueous-hollows-18494.herokuapp.com/new', newNote)
+    .post('http://localhost:5000/new', newNote)
     .then(response => {
       console.log(response);
       this.setState({
@@ -50,7 +48,7 @@ export default class App extends React.Component {
     })
 
     // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-    axios.get('http://aqueous-hollows-18494.herokuapp.com/')
+    axios.get('http://localhost:5000/')
     .then(response => {
       this.setState({ notes: response.data })
     })
@@ -72,14 +70,14 @@ export default class App extends React.Component {
     const editedNotes = [...this.state.notes];
 
     axios
-    .put('https://aqueous-hollows-18494.herokuapp.com/edit/:id', editedNote)
+    .put('https://peaceful-meadow-91763.herokuapp.com/edit/:id', editedNote)
     .then(res => {
       this.setState({
         notes: editedNotes
       })
     })
 
-    axios.get('https://aqueous-hollows-18494.herokuapp.com/')
+    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
     .then(response => {
       this.setState({ notes: response.data })
     })
@@ -92,11 +90,11 @@ export default class App extends React.Component {
   handleDeleteNote = inputId => {
     const id = inputId;
 
-    axios.delete('https://aqueous-hollows-18494.herokuapp.com/:id')
+    axios.delete('https://peaceful-meadow-91763.herokuapp.com/:id')
     .then(
       console.log(`${id} deleted`)
     )
-    axios.get('https://aqueous-hollows-18494.herokuapp.com/')
+    axios.get('https://peaceful-meadow-91763.herokuapp.com/')
     .then(response => {
       this.setState({ notes: response.data })
     })
@@ -109,77 +107,12 @@ export default class App extends React.Component {
     // this.setState({
     //   notes: lessNotes,
     // });
-
-    handleRegister = inputUser => {
-      const newUser = {
-        userId: this.nextUserId++,
-        username: inputNote.username,
-        password: inputNote.password,
-      };
-      const newUsers = [...this.state.users, newUser];
-      console.log('handlecreatenote')
   
-      axios
-      // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-      .post('http://aqueous-hollows-18494.herokuapp.com/register', newUser)
-      .then(response => {
-        console.log(response);
-        this.setState({
-          users: newUsers
-        });
-      })
-      .catch(err => {
-        console.log({err: 'handleCreateNote error in App component'})
-      })
-  
-      // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-      axios.get('http://aqueous-hollows-18494.herokuapp.com/')
-      .then(response => {
-        this.setState({ notes: response.data })
-      })
-  
-  
-      
-      // const newNotes = [...this.state.notes, newNote];
-      // this.setState({
-      //   notes: newNotes,
-      // });
-    };
-
-    handleLogin = inputUser => {
-      const User = {
-        username: inputUser.username,
-        password: inputUser.password,
-      };
-  
-      axios
-      // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-      .post('http://aqueous-hollows-18494.herokuapp.com/login', User)
-      .then(response => {
-        console.log(response, 'Logged In');
-      })
-      .catch(err => {
-        console.log({err: 'Could Not Login'})
-      })
-  
-      // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-      axios.get('http://aqueous-hollows-18494.herokuapp.com/')
-      .then(response => {
-        this.setState({ users: response.data })
-      })
-  
-  
-      
-      // const newNotes = [...this.state.notes, newNote];
-      // this.setState({
-      //   notes: newNotes,
-      // });
-    };
 
 
   componentDidMount(){
     axios
-    .get('http://aqueous-hollows-18494.herokuapp.com/')
+    .get('http://localhost:5000/')
     .then(response =>{
       this.setState({notes: response.data})
     })
@@ -196,8 +129,6 @@ export default class App extends React.Component {
           <Route exact path={"/new"} render={() => <CreateNote createNote={this.handleCreateNote} />} />
           <Route exact path={"/view"} render={() => <NoteView note={this.state.notes[this.noteIndex]} toggleModal={this.toggleModal} handleDeleteNote={this.handleDeleteNote} />} />
           <Route exact path={"/edit"} render={() => <EditNote note={this.state.notes[this.noteIndex]} handleEditNote={this.handleEditNote} />} />
-          <Route exact path={"/login"} render={() => <Login user={this.state.users} handleLogin={this.handleLogin} />} />
-          <Route exact path={"/register"} render={() => <Register user={this.state.users} handleRegister={this.handleRegister} />} />
         </div>
       </Router>
     );
