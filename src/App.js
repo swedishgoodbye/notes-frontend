@@ -7,6 +7,8 @@ import NoteList from './NoteList';
 import CreateNote from './CreateNote';
 import NoteView from './NoteView';
 import EditNote from './EditNote';
+import Login from './LogIn';
+import Register from './Register';
 
 import './App.css';
 
@@ -113,8 +115,8 @@ export default class App extends React.Component {
     handleRegister = inputUser => {
       const newUser = {
         userId: this.nextUserId++,
-        username: inputNote.username,
-        password: inputNote.password,
+        username: inputUser.username,
+        password: inputUser.password,
       };
       const newUsers = [...this.state.users, newUser];
       console.log('handlecreatenote')
