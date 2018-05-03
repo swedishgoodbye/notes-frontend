@@ -9,7 +9,9 @@ import './NoteList.css';
 export default class NoteList extends React.Component {
 
 
-
+  componentDidMount(){
+    console.log(this.props)
+  }
 
 
 
