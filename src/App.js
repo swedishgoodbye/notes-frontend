@@ -14,7 +14,7 @@ import './App.css';
 
 
 export default class App extends React.Component {
-  nextId = 0;
+  nextId = 0; 
   noteIndex = 0;
   nextUserId = 0;
 
@@ -40,7 +40,7 @@ export default class App extends React.Component {
 
     axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-    .post('http://aqueous-hollows-18494.herokuapp.com/new', newNote)
+    .post('https://aqueous-hollows-18494.herokuapp.com/new', newNote)
     .then(response => {
       console.log(response);
       this.setState({
@@ -52,7 +52,7 @@ export default class App extends React.Component {
     })
 
     // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-    axios.get('http://aqueous-hollows-18494.herokuapp.com/')
+    axios.get('https://aqueous-hollows-18494.herokuapp.com/')
     .then(response => {
       this.setState({ notes: response.data })
     })
@@ -135,7 +135,7 @@ export default class App extends React.Component {
       })
   
       // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-      axios.get('http://aqueous-hollows-18494.herokuapp.com/')
+      axios.get('https://aqueous-hollows-18494.herokuapp.com/')
       .then(response => {
         this.setState({ notes: response.data })
       })
@@ -156,7 +156,7 @@ export default class App extends React.Component {
   
       axios
       // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-      .post('http://aqueous-hollows-18494.herokuapp.com/login', User)
+      .post('https://aqueous-hollows-18494.herokuapp.com/login', User)
       .then(response => {
         console.log(response, 'Logged In');
       })
@@ -165,7 +165,7 @@ export default class App extends React.Component {
       })
   
       // axios.get('https://peaceful-meadow-91763.herokuapp.com/')
-      axios.get('http://aqueous-hollows-18494.herokuapp.com/')
+      axios.get('https://aqueous-hollows-18494.herokuapp.com/')
       .then(response => {
         this.setState({ users: response.data })
       })
@@ -181,7 +181,7 @@ export default class App extends React.Component {
 
   componentDidMount(){
     axios
-    .get('http://aqueous-hollows-18494.herokuapp.com/')
+    .get('https://aqueous-hollows-18494.herokuapp.com/')
     .then(response =>{
       this.setState({notes: response.data})
     })
