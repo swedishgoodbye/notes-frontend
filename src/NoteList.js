@@ -20,6 +20,12 @@ export default class NoteList extends React.Component {
     this.props.handleNoteViewIndex(index);
   };
 
+  handleNoteClick = (event) => {
+    this.setState({
+      [event.target._id]: event.target.value,
+      note_id: event.target._id
+    })
+  }
 
 
   render() {
@@ -29,7 +35,7 @@ export default class NoteList extends React.Component {
         <div className='note-container'>
         {this.props.notes.map(note => {
          return ( 
-         <Link className='note-card' to={`/view/${note.id}`}>
+         <Link className='note-card' onClick={(event) => this.handleNoteClick(event)} to={`/view/${note_id}`}>
           <div>
             <div>{note.title}</div>
             <div>{note.content}</div>
