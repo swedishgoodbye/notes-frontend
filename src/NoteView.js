@@ -25,6 +25,8 @@ export default class NoteView extends React.Component {
       title: this.props.note.title,
       body: this.props.note.body,
     });
+    console.log(this.state)
+    console.log(this.props)
   };
 
   render() {
