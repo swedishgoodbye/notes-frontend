@@ -7,6 +7,7 @@ import "./CreateNote.css";
 
 export default class CreateNote extends React.Component {
   state = {
+    id: '',
     title: '',
     content: '',
   };
@@ -16,9 +17,9 @@ export default class CreateNote extends React.Component {
   };
 
   handleSubmit = _ => {
-    const { title, content } = this.state;
-    this.props.createNote({ title, content });
-    this.setState({ title: '', content: '', });
+    const { id, title, content } = this.state;
+    this.props.createNote({ id, title, content });
+    this.setState({ id: '', title: '', content: '', });
     console.log('submit')
     // axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new')
