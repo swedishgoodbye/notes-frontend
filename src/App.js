@@ -31,7 +31,7 @@ export default class App extends React.Component {
 
   handleCreateNote = inputNote => {
     const newNote = {
-      _id: this.nextId++,
+      _id: this.next_id++,
       title: inputNote.title,
       content: inputNote.content,
     };
