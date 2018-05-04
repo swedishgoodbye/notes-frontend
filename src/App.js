@@ -140,11 +140,11 @@ export default class App extends React.Component {
         this.setState({ notes: response.data })
       })
 
-      handleNoteClick = (event) => {
-        this.setState({
-          [event.target._id]: event.target.value
-        })
-      }
+      // handleNoteClick = (event) => {
+      //   this.setState({
+      //     [event.target._id]: event.target.value
+      //   })
+      // }
   
   
       
