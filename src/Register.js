@@ -13,7 +13,7 @@ export default class Register extends React.Component {
   
     handleSubmit = _ => {
       const { username, password } = this.state;
-      this.props.Register({ username, password });
+      this.props.userRegister({ username, password });
       this.setState({ username: '', password: '', });
       console.log('reg')
 
