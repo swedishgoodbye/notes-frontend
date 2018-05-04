@@ -185,6 +185,7 @@ export default class App extends React.Component {
     .then(response =>{
       this.setState({notes: response.data})
       console.log(this.state.notes);
+      console.log(this.state.notes._id);
     })
 
   }
