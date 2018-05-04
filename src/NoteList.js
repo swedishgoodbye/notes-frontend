@@ -23,7 +23,6 @@ export default class NoteList extends React.Component {
   handleNoteClick = (event) => {
     this.setState({
       [event.target._id]: event.target.value,
-      note_id: event.target._id
     })
   }
 
@@ -35,7 +34,7 @@ export default class NoteList extends React.Component {
         <div className='note-container'>
         {this.props.notes.map(note => {
          return ( 
-         <Link className='note-card' onClick={(event) => this.handleNoteClick(event)} to={`/view/${note_id}`}>
+         <Link className='note-card' onClick={(event) => this.handleNoteClick(event)} to={`/view/${event.target_id}`}>
           <div>
             <div>{note.title}</div>
             <div>{note.content}</div>
