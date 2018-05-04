@@ -184,7 +184,7 @@ export default class App extends React.Component {
     .get('https://aqueous-hollows-18494.herokuapp.com/')
     .then(response =>{
       this.setState({notes: response.data})
-      console.log(notes);
+      console.log(this.state.notes);
     })
 
   }
