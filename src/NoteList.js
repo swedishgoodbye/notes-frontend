@@ -25,12 +25,15 @@ export default class NoteList extends React.Component {
     return (
       <div className="YourNotes">
         <h2 className="SectionTitle">Your Notes:</h2>
-        <div>
+        <div className='note-container'>
         {this.props.notes.map(note => {
-         return ( <div>
-          <div>{note.title}</div>
-          <div>{note.content}</div>
-         </div> 
+         return ( 
+         <Link className='note-card' to={`/view/${note.id}`}>
+          <div>
+            <div>{note.title}</div>
+            <div>{note.content}</div>
+          </div>
+          </Link>
         )})}
         </div>
       </div>
