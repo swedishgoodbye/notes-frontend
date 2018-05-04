@@ -7,7 +7,7 @@ import NoteList from './NoteList';
 import CreateNote from './CreateNote';
 import NoteView from './NoteView';
 import EditNote from './EditNote';
-import Login from './Login';
+import Login from './LogIn';
 import Register from './Register';
 
 import './App.css';

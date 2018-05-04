@@ -23,7 +23,7 @@ export default class Login extends React.Component {
         const { username, password } = this.state;
         return (
             <div className='Login'>
-                <h3 className='RegTitle'>Enter Your Username and Password To Login:</h3>
+                <h3 className='Logitle'>Enter Your Username and Password To Login:</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input
                     className='Login-Username'
