@@ -14,24 +14,24 @@ import './App.css';
 
 
 export default class App extends React.Component {
-  nextId = 0; 
+  next_id = 0; 
   noteIndex = 0;
-  nextUserId = 0;
+  nextUser_id = 0;
 
   state = {
     notes: [],
     users:[]
   };
 
-  handleNoteViewIndex = inputId => {
+  handleNoteViewIndex = input_id => {
     for (let i = 0; i < this.state.notes.length; i++) {
-      if (this.state.notes[i].id === inputId) this.noteIndex = i;
+      if (this.state.notes[i]._id === input_id) this.noteIndex = i;
     };
   };
 
   handleCreateNote = inputNote => {
     const newNote = {
-      id: this.nextId++,
+      _id: this.nextId++,
       title: inputNote.title,
       content: inputNote.content,
     };
@@ -67,7 +67,7 @@ export default class App extends React.Component {
 
   handleEditNote = inputNote => {
     const editedNote = {
-      id: inputNote.id,
+      _id: inputNote._id,
       title: inputNote.title,
       body: inputNote.body,
     };
@@ -91,12 +91,12 @@ export default class App extends React.Component {
     // });
   };
 
-  handleDeleteNote = inputId => {
-    const id = inputId;
+  handleDeleteNote = input_id => {
+    const _id = input_id;
 
     axios.delete('https://aqueous-hollows-18494.herokuapp.com/:_id')
     .then(
-      console.log(`${id} deleted`)
+      console.log(`${_id} deleted`)
     )
     axios.get('https://aqueous-hollows-18494.herokuapp.com/')
     .then(response => {
@@ -105,7 +105,7 @@ export default class App extends React.Component {
   };
 
 
-    // const lessNotes = this.state.notes.filter(note => note.id !== inputId);
+    // const lessNotes = this.state.notes.filter(note => note._id !== input_id);
 
 
     // this.setState({
@@ -114,7 +114,7 @@ export default class App extends React.Component {
 
     handleRegister = inputUser => {
       const newUser = {
-        userId: this.nextUserId++,
+        user_id: this.nextUser_id++,
         username: inputUser.username,
         password: inputUser.password,
       };
