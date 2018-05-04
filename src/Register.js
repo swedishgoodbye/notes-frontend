@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default class RegUser extends React.Component {
+export default class Register extends React.Component {
     state = {
       username: '',
       password: '',
@@ -13,7 +13,7 @@ export default class RegUser extends React.Component {
   
     handleSubmit = _ => {
       const { username, password } = this.state;
-      this.props.createNote({ username, password });
+      this.props.Register({ username, password });
       this.setState({ username: '', password: '', });
       console.log('reg')
 
