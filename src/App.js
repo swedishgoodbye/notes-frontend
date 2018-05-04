@@ -123,7 +123,7 @@ export default class App extends React.Component {
   
       axios
       // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
-      .post('http://aqueous-hollows-18494.herokuapp.com/register', newUser)
+      .post('https://aqueous-hollows-18494.herokuapp.com/register', newUser)
       .then(response => {
         console.log(response);
         this.setState({
