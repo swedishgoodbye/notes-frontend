@@ -36,7 +36,7 @@ export default class App extends React.Component {
       content: inputNote.content,
     };
     const newNotes = [...this.state.notes, newNote];
-    console.log('handlecreatenote')
+    console.log('handlecreatenote', newNote, newNote._id)
 
     axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new', newNote)
@@ -74,7 +74,7 @@ export default class App extends React.Component {
     const editedNotes = [...this.state.notes];
 
     axios
-    .put('https://aqueous-hollows-18494.herokuapp.com/edit/:id', editedNote)
+    .put('https://aqueous-hollows-18494.herokuapp.com/edit/:_id', editedNote)
     .then(res => {
       this.setState({
         notes: editedNotes
@@ -94,7 +94,7 @@ export default class App extends React.Component {
   handleDeleteNote = inputId => {
     const id = inputId;
 
-    axios.delete('https://aqueous-hollows-18494.herokuapp.com/:id')
+    axios.delete('https://aqueous-hollows-18494.herokuapp.com/:_id')
     .then(
       console.log(`${id} deleted`)
     )
