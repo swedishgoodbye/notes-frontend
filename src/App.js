@@ -207,7 +207,7 @@ export default class App extends React.Component {
           <Route exact path={`/view/:_id`} render={() => <NoteView note={this.state.notes} toggleModal={this.toggleModal} handleDeleteNote={this.handleDeleteNote} />} />
           <Route exact path={"/edit"} render={() => <EditNote note={this.state.notes[this.noteIndex]} handleEditNote={this.handleEditNote} />} />
           <Route exact path={"/login"} render={() => <Login user={this.state.users} handleLogin={this.handleLogin} />} />
-          <Route exact path={"/register"} render={() => <Register user={this.state.users} handleRegister={this.handleRegister} />} />
+          <Route exact path={"/register"} render={() => <Register user={this.state.users} userRegister={this.handleRegister} />} />
         </div>
       </Router>
     );
