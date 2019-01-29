@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import axios from 'axios';
+import axios from "axios";
 
 import "./CreateNote.css";
 
 export default class CreateNote extends React.Component {
   state = {
-    _id: '',
-    title: '',
-    content: '',
+    _id: "",
+    title: "",
+    content: ""
   };
 
   handleInputChange = event => {
@@ -19,8 +19,8 @@ export default class CreateNote extends React.Component {
   handleSubmit = _ => {
     const { _id, title, content } = this.state;
     this.props.createNote({ _id, title, content });
-    this.setState({ _id: '', title: '', content: '', });
-    console.log('submit')
+    this.setState({ _id: "", title: "", content: "" });
+    console.log("submit");
     // axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new')
     // .then(response => {
@@ -65,9 +65,13 @@ export default class CreateNote extends React.Component {
             required
           />
           <br />
-          <Link to={"/"}><button onClick={() => this.handleSubmit()} type="submit">Save</button></Link>
+          <Link to={"/"}>
+            <button onClick={() => this.handleSubmit()} type="submit">
+              Save
+            </button>
+          </Link>
         </form>
       </div>
     );
-  };
+  }
 }

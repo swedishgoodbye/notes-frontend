@@ -2,13 +2,23 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 
-import Sidebar from "./Sidebar";
-import NoteList from "./NoteList";
-import CreateNote from "./CreateNote";
-import NoteView from "./NoteView";
-import EditNote from "./EditNote";
-import Login from "./LogIn";
-import Register from "./Register";
+// import Sidebar from "./Sidebar";
+// import NoteList from "./NoteList";
+// import CreateNote from "./CreateNote";
+// import NoteView from "./NoteView";
+// import EditNote from "./EditNote";
+// import Login from "./LogIn";
+// import Register from "./Register";
+
+import {
+  Sidebar,
+  NoteList,
+  NoteView,
+  EditNote,
+  Login,
+  Register,
+  CreateNote
+} from "./components";
 
 import "./App.css";
 
