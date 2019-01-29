@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './CreateNote.css';
+import "../create/CreateNote.css";
 
 export default class EditNote extends React.Component {
   state = {
     _id: 0,
-    title: '',
-    body: '',
+    title: "",
+    body: ""
   };
 
   componentDidMount() {
     this.setState({
       _id: this.props.note._id,
       title: this.props.note.title,
-      body: this.props.note.body,
+      body: this.props.note.body
     });
   }
 
@@ -25,7 +25,7 @@ export default class EditNote extends React.Component {
   handleSubmit = _ => {
     const { _id, title, body } = this.state;
     this.props.handleEditNote({ _id, title, body });
-    this.setState({ _id: 0, title: '', body: '', });
+    this.setState({ _id: 0, title: "", body: "" });
   };
 
   render() {
@@ -53,9 +53,13 @@ export default class EditNote extends React.Component {
             required
           />
           <br />
-          <Link to={"/view"}><button onClick={() => this.handleSubmit()} type="submit">Update</button></Link>
+          <Link to={"/view"}>
+            <button onClick={() => this.handleSubmit()} type="submit">
+              Update
+            </button>
+          </Link>
         </form>
       </div>
     );
-  };
+  }
 }
