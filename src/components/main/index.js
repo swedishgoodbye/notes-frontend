@@ -1,48 +1,75 @@
-import React from 'react';
-import { CSVLink } from 'react-csv';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { CSVLink } from "react-csv";
+import { Link } from "react-router-dom";
 
-import Note from './Note';
+import { connect } from "react-redux";
+import { getNotes } from "../../actions";
 
-import './NoteList.css';
+import Note from "./Note";
 
+import "./NoteList.css";
 
-export default class NoteList extends React.Component {
-
-
-  componentDidMount(){
-    console.log(this.props)
+class NoteList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      notes: this.props.notes
+    };
   }
 
-
+  componentDidMount() {
+    this.props.getNotes();
+    this.setState({
+      // noteIndex: 0,
+      notes: this.props.notes
+    });
+    console.log(this.props);
+  }
 
   handleNoteIndex = index => {
     this.props.handleNoteViewIndex(index);
   };
 
-  handleNoteClick = (event) => {
+  handleNoteClick = event => {
     this.setState({
-      [event.target._id]: event.target.value,
-    })
-  }
-
+      [event.target._id]: event.target.value
+    });
+  };
 
   render() {
     return (
       <div className="YourNotes">
         <h2 className="SectionTitle">Your Notes:</h2>
-        <div className='note-container'>
-        {this.props.notes.map(note => {
-         return ( 
-         <Link className='note-card' onClick={(event) => this.handleNoteClick(event)} to={`/view/${note._id}`}>
-          <div>
-            <div>{note.title}</div>
-            <div>{note.content}</div>
-          </div>
-          </Link>
-        )})}
+        {/* <div className="notes-section"> */}
+        <div className="note-container">
+          {this.props.notes.map(note => {
+            return (
+              <Link
+                className="note-outer-wrapper"
+                onClick={event => this.handleNoteClick(event)}
+                to={{ pathname: `/view/${note._id}`, state: { note: note } }}
+              >
+                <div className="note-inner-wrapper">
+                  <div className="note-title">{note.title}</div>
+                  <div className="note-content">{note.content}</div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
+        {/* </div> */}
       </div>
     );
-  };
+  }
 }
+
+const mapStateToProps = state => {
+  return {
+    notes: state.notes
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getNotes }
+)(NoteList);

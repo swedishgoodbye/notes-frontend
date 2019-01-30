@@ -1,56 +1,72 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import DeleteNote from './DeleteNote';
-import { Link } from 'react-router-dom';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import DeleteNote from "./DeleteNote";
+import { Link } from "react-router-dom";
 
-import './NoteView.css';
+import "./NoteView.css";
 
 export default class NoteView extends React.Component {
   boolModal = false;
 
   state = {
-    id: 0,
-    title: '',
-    body: '',
+    title: this.props.location.state.note.title,
+    content: this.props.location.state.note.content,
+    _id: this.props.location.state.note._id
   };
 
   toggleModal = _ => {
     this.boolModal = !this.boolModal;
     this.forceUpdate();
-  }
+  };
 
   componentDidMount() {
     this.setState({
-      id: this.props.note.id,
-      title: this.props.note.title,
-      body: this.props.note.body,
+      title: this.props.location.state.note.title,
+      content: this.props.location.state.note.content,
+      _id: this.props.location.state.note._id
     });
-    console.log(this.state)
-    console.log(this.props)
-  };
+    console.log("view mount", this.state);
+    console.log(this.props);
+  }
 
   render() {
-    const { id, title, body } = this.state;
+    const { _id, title, content } = this.state;
+    const notes = this.state;
     return (
       <div className="NoteView">
         {this.boolModal ? (
           <div>
-            <DeleteNote id={id} toggleModal={this.toggleModal} handleDeleteNote={this.props.handleDeleteNote} />
+            <DeleteNote
+              id={_id}
+              toggleModal={this.toggleModal}
+              handleDeleteNote={this.props.handleDeleteNote}
+            />
           </div>
-        ) : (null)}
+        ) : null}
         <div className="NoteView-Links">
           <div>
-            <Link className="NoteView-Links-Link" to={"/edit"}>edit</Link>
+            <Link
+              className="NoteView-Links-Link"
+              id={_id}
+              to={{ pathname: `/edit/${_id}`, state: { note: notes } }}
+            >
+              edit
+            </Link>
           </div>
           <div>
-            <a className="NoteView-Links-Link" onClick={() => this.toggleModal()}>delete</a>
+            <a
+              className="NoteView-Links-Link"
+              onClick={() => this.toggleModal()}
+            >
+              delete
+            </a>
           </div>
         </div>
         <div>
           <h2 className="SectionTitle">{title}</h2>
-          <ReactMarkdown source={body} />
+          <ReactMarkdown source={content} />
         </div>
       </div>
     );
-  };
+  }
 }

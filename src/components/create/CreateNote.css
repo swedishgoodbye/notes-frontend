@@ -13,7 +13,7 @@
   font-family: "Raleway", sans-serif;
 }
 
-.CreateNote-BodyBox {
+.CreateNote-ContentBox {
   display: flex;
   padding: 10px;
   width: 90%;

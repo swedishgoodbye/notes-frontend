@@ -3,20 +3,66 @@
   flex-flow: column nowrap;
   margin: 20px;
   padding: 0px;
+  color: white;
+  width: 100%;
 }
 
 .YourNotes-Empty {
   color: grey;
   font-weight: 100;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .YourNotes-NoteList {
   display: flex;
   flex-flow: row wrap;
+  color: white;
 }
 
 .YourNotes-CSV {
   align-self: flex-start;
-  color: gray;
+  color: white;
+}
+
+.SectionTitle {
+  color: white;
+}
+
+.notes-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+}
+
+.note-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /* flex-grow: 1; */
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.note-outer-wrapper {
+  /* color: white;
+  border: 1px solid white; */
+  width: 15%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  /* margin-right: 10px; */
+}
+
+.note-inner-wrapper {
+  color: white;
+  border: 1px solid white;
+  width: 90%;
+  height: 90%;
 }

@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { getNotes, addNote } from "../../actions";
 
 import axios from "axios";
 
 import "./CreateNote.css";
 
-export default class CreateNote extends React.Component {
+class CreateNote extends React.Component {
   state = {
     _id: "",
     title: "",
@@ -16,11 +19,15 @@ export default class CreateNote extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = _ => {
+  handleSubmit = () => {
     const { _id, title, content } = this.state;
-    this.props.createNote({ _id, title, content });
-    this.setState({ _id: "", title: "", content: "" });
+    // this.props.createNote({ _id, title, content });
+    this.props.addNote({ title: title, content: content });
+    // this.setState({ _id: "", title: "", content: "" });
+    this.setState({ title: "", content: "" });
     console.log("submit");
+
+    this.props.getNotes({ title: title, content: content });
     // axios
     // .post('https://peaceful-meadow-91763.herokuapp.com/new')
     // .then(response => {
@@ -56,7 +63,7 @@ export default class CreateNote extends React.Component {
           />
           <br />
           <textarea
-            className="CreateNote-BodyBox"
+            className="CreateNote-ContentBox"
             value={content}
             name="content"
             type="text"
@@ -66,7 +73,7 @@ export default class CreateNote extends React.Component {
           />
           <br />
           <Link to={"/"}>
-            <button onClick={() => this.handleSubmit()} type="submit">
+            <button onClick={this.handleSubmit} type="submit">
               Save
             </button>
           </Link>
@@ -75,3 +82,14 @@ export default class CreateNote extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    notes: state.notes
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addNote, getNotes }
+)(CreateNote);

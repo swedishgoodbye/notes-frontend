@@ -2,10 +2,10 @@
   display: flex;
   flex-flow: column nowrap;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.5);
+  border: 1px solid white;
   width: 200px;
   padding: 0px 20px 20px 20px;
-  color: black;
+  color: white;
   margin: 0px 10px 10px 0px;
   height: 220px;
 }
@@ -16,7 +16,7 @@
 }
 
 .Note-NoteTitle {
-  border-bottom: 1px solid rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   margin: 0;
   padding: 0px 0px 8px 0px;
   width: 100%;
@@ -26,10 +26,10 @@
   text-overflow: clip;
 }
 
-.Note-NoteBody {
+.Note-NoteContent {
   padding-top: 10px;
   width: 100%;
   white-space: wrap;
   overflow: hidden;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }

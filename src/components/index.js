@@ -1,5 +1,5 @@
 import CreateNote from "./create/";
-import EditNote from "./edit";
+import EditNote from "./note/EditNote";
 import NoteList from "./main";
 import NoteView from "./note";
 import Login from "./sidebar/Login";
