@@ -1,9 +1,17 @@
-import { FINDINGNOTES, FOUNDNOTES, ADDINGNOTE, ADDEDNOTE } from "../actions";
+import {
+  FINDINGNOTES,
+  FOUNDNOTES,
+  ADDINGNOTE,
+  ADDEDNOTE,
+  EDITINGNOTE,
+  EDITEDNOTE
+} from "../actions";
 
 const initialState = {
   notes: [],
   findingNotes: false,
-  addingNote: false
+  addingNote: false,
+  editingNote: false
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -28,6 +36,16 @@ export const Reducer = (state = initialState, action) => {
       return {
         ...state,
         addingNote: false
+      };
+    case EDITINGNOTE:
+      return {
+        ...state,
+        editingNote: true
+      };
+    case EDITEDNOTE:
+      return {
+        ...state,
+        editingNote: false
       };
     case Error:
       return { ...state, error: action.errorMessage };

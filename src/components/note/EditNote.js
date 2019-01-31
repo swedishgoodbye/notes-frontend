@@ -10,18 +10,18 @@ class EditNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.location.state.note.title,
-      content: this.props.location.state.note.content
+      title: "",
+      content: ""
     };
   }
 
   componentDidMount() {
-    // this.setState({
-    //   title: this.props.note.title,
-    //   content: this.props.note.content
-    // });
+    this.setState({
+      title: this.props.location.state.note.title,
+      content: this.props.location.state.note.content
+    });
     // console.log("edit state", this.state);
-    console.log("mounting this", this);
+    // console.log("mounting this", this);
   }
 
   handleInputChange = event => {
@@ -30,12 +30,14 @@ class EditNote extends React.Component {
 
   handleSubmit = () => {
     const { title, content } = this.state;
+    // console.log(title, "Submit data");
     this.props.editNote({ title, content }, this.props.location.state.note._id);
-    this.setState({ title: "", content: "" });
+    // this.setState({ title: "", content: "" });
   };
 
   render() {
     const { title, content } = this.state;
+    const id = this.props.location.state.note._id;
     return (
       <div className="CreateNote">
         <h2 className="SectionTitle">Edit Note:</h2>
@@ -59,8 +61,12 @@ class EditNote extends React.Component {
             required
           />
           <br />
-          <Link to={"/view"}>
-            <button onClick={() => this.handleSubmit()} type="submit">
+          <Link
+            to={{
+              pathname: `/`
+            }}
+          >
+            <button onClick={this.handleSubmit} type="submit">
               Update
             </button>
           </Link>

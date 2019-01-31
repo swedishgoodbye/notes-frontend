@@ -50,7 +50,7 @@ export const editNote = (note_data, noteid) => dispatch => {
     type: EDITINGNOTE
   });
   axios
-    .put(`${URL}/u/${noteid + ""}`, {
+    .put(`${URL}/u/${noteid}`, {
       title: note_data.title,
       content: note_data.content
     })
@@ -59,5 +59,8 @@ export const editNote = (note_data, noteid) => dispatch => {
         type: EDITEDNOTE,
         note_data: res.data
       });
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, errorMessage: "Errorr editing note..." });
     });
 };

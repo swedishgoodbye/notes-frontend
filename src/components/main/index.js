@@ -13,17 +13,17 @@ class NoteList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: this.props.notes
+      // notes: this.props.notes
     };
+    this.props.getNotes();
   }
 
   componentDidMount() {
-    this.props.getNotes();
-    this.setState({
-      // noteIndex: 0,
-      notes: this.props.notes
-    });
-    console.log(this.props);
+    // this.setState({
+    //   // noteIndex: 0,
+    //   notes: this.props.notes
+    // });
+    // console.log(this.props);
   }
 
   handleNoteIndex = index => {
