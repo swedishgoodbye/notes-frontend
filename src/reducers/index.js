@@ -56,6 +56,7 @@ export const Reducer = (state = initialState, action) => {
     case EDITEDNOTE:
       return {
         ...state,
+        // notes: action.notes,
         editingNote: false
       };
     case DELETINGNOTE:
@@ -67,7 +68,7 @@ export const Reducer = (state = initialState, action) => {
       return {
         ...state,
         // log: console.log(state.notes.filter(item => item._id !== action.id)),
-        notes: state.notes.filter(item => item._id !== action.id),
+        notes: state.notes.filter(note => note._id !== action.id),
         deletingNotes: false
       };
     case LOGGINGIN:

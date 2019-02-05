@@ -13,20 +13,26 @@ class NoteList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // notes: []
+      notes: [],
     };
     this.props.getNotes();
+    // this.props.getNotes();
   }
 
-  // componentWillMount() {
-  //   this.props.getNotes();
-
-  //   // this.setState({
-  //   //   // noteIndex: 0,
-  //   //   notes: this.props.notes
-  //   // });
-  //   // console.log(this.props);
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.props.notes !== prevProps.notes) {
+  //     console.log("prev", prevProps);
+  //     console.log("curr", this);
+  //   }
   // }
+
+  componentWillMount() {
+    // this.setState({
+    //   // noteIndex: 0,
+    //   notes: this.props.notes
+    // });
+    this.props.getNotes();
+  }
 
   handleNoteIndex = index => {
     this.props.handleNoteViewIndex(index);
@@ -39,6 +45,7 @@ class NoteList extends Component {
   };
 
   render() {
+    // let notes = this.state.notes;
     return (
       <div className="YourNotes">
         <h2 className="SectionTitle">Your Notes:</h2>

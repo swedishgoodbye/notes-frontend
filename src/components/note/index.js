@@ -12,9 +12,9 @@ class NoteView extends React.Component {
   boolModal = false;
 
   state = {
-    title: this.props.location.state.note.title,
-    content: this.props.location.state.note.content,
-    _id: this.props.location.state.note._id
+    title: "",
+    content: "",
+    _id: ""
   };
 
   // toggleModal = _ => {
