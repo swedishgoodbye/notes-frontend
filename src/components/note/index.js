@@ -69,6 +69,7 @@ class NoteView extends React.Component {
               to={"/"}
             >
               delete
+              {/* </button> */}
             </Link>
           </div>
         </div>

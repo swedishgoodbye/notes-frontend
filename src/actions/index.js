@@ -53,7 +53,7 @@ export const getNotes = () => dispatch => {
       dispatch({ type: FOUNDNOTES, notes: res.data });
     })
     .catch(err => {
-      dispatch({ type: ERROR, errorMessage: "Error Fetching Projects!" });
+      dispatch({ type: ERROR, errorMessage: "Error Fetching Notes!" });
     });
 };
 
@@ -99,10 +99,25 @@ export const deleteNote = noteid => dispatch => {
   dispatch({
     type: DELETINGNOTE
   });
-  axios.delete(`${URL}/d/${noteid}`).then(response => {
+  axios.delete(`${URL}/d/${noteid}`).then(res => {
+    console.log(noteid);
     dispatch({
       type: DELETEDNOTE,
-      note_data: response.data
+      id: noteid
     });
   });
+  // dispatch({
+  //   type: FINDINGNOTES
+  // });
+
+  // axios
+  //   .get(`${URL}/f/notes`)
+  //   .then(res => {
+  //     console.log("NOTES IN DB:", res.data.length);
+  //     const all_notes = res.data;
+  //     dispatch({ type: FOUNDNOTES, notes: res.data });
+  //   })
+  //   .catch(err => {
+  //     dispatch({ type: ERROR, errorMessage: "Error Fetching Notes!" });
+  //   });
 };
