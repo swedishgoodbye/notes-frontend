@@ -4,14 +4,25 @@ import {
   ADDINGNOTE,
   ADDEDNOTE,
   EDITINGNOTE,
-  EDITEDNOTE
+  EDITEDNOTE,
+  LOGGINGIN,
+  LOGGEDIN,
+  LOGGINGOUT,
+  LOGGEDOUT,
+  DELETEDNOTE,
+  DELETINGNOTE,
+  ERROR
 } from "../actions";
 
 const initialState = {
   notes: [],
+  authed: false,
   findingNotes: false,
   addingNote: false,
-  editingNote: false
+  editingNote: false,
+  loggingIn: false,
+  loggingOut: false,
+  deletingNote: false
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -24,8 +35,8 @@ export const Reducer = (state = initialState, action) => {
     case FOUNDNOTES:
       return {
         ...state,
-        findingNotes: false,
-        notes: action.notes
+        notes: action.notes,
+        findingNotes: false
       };
     case ADDINGNOTE:
       return {
@@ -46,6 +57,36 @@ export const Reducer = (state = initialState, action) => {
       return {
         ...state,
         editingNote: false
+      };
+    case DELETINGNOTE:
+      return {
+        ...state,
+        deletingNote: true
+      };
+    case DELETEDNOTE:
+      return {
+        ...state,
+        notes: action.notes,
+        deletingNotes: false
+      };
+    case LOGGINGIN:
+      return {
+        ...state,
+        logginIn: true
+      };
+    case LOGGEDIN:
+      return {
+        ...state,
+        authed: true,
+        user: action.payload
+      };
+    case LOGGINGOUT:
+      return { ...state, loggingOut: true };
+    case LOGGEDOUT:
+      return {
+        ...state,
+        authed: false,
+        loggingOut: false
       };
     case Error:
       return { ...state, error: action.errorMessage };

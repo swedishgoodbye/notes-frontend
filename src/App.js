@@ -262,6 +262,7 @@ export default class App extends React.Component {
             path={"/edit/:_id"}
             render={props => <EditNote {...props} />}
           />
+          <Route exact path={"/login"} render={() => <Login />} />
         </div>
       </Router>
     );

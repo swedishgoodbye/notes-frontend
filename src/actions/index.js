@@ -1,14 +1,44 @@
 import axios from "axios";
 
+import jwt_decode from "jwt-decode";
+
 export const FINDINGNOTES = "FINDINGNOTES";
 export const FOUNDNOTES = "FOUNDNOTES";
 export const ADDINGNOTE = "ADDINGNOTE";
 export const ADDEDNOTE = "ADDEDNOTE";
 export const EDITINGNOTE = "EDITINGNOTE";
 export const EDITEDNOTE = "EDITEDNOTE";
+export const LOGGINGIN = "LOGGINGIN";
+export const LOGGEDIN = "LOGGEDIN";
+export const LOGGINGOUT = "LOGGINGOUT";
+export const LOGGEDOUT = "LOGGEDOUT";
+export const DELETINGNOTE = "DELETINGNOTE";
+export const DELETEDNOTE = "DELETEDNOTE";
 export const ERROR = "ERROR";
 
 const URL = "http://localhost:27017/api";
+
+export const logIn = (user, history) => dispatch => {
+  localStorage.clear();
+  axios
+    .post(`${URL}/l`, {
+      username: user.username,
+      password: user.password
+    })
+    .then(res => {
+      console.log("RES", res);
+      const { token } = res.data;
+      localStorage.setItem("jwtToken", token);
+
+      const decoded_token = jwt_decode(token);
+      dispatch({ type: LOGGEDIN, payload: decoded_token });
+
+      window.location.reload(true);
+    })
+    .catch(err => {
+      dispatch({ type: ERROR, payload: err });
+    });
+};
 
 export const getNotes = () => dispatch => {
   dispatch({
@@ -61,6 +91,18 @@ export const editNote = (note_data, noteid) => dispatch => {
       });
     })
     .catch(err => {
-      dispatch({ type: ERROR, errorMessage: "Errorr editing note..." });
+      dispatch({ type: ERROR, errorMessage: "Error editing note..." });
     });
+};
+
+export const deleteNote = noteid => dispatch => {
+  dispatch({
+    type: DELETINGNOTE
+  });
+  axios.delete(`${URL}/d/${noteid}`).then(response => {
+    dispatch({
+      type: DELETEDNOTE,
+      note_data: response.data
+    });
+  });
 };

@@ -2,10 +2,13 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import DeleteNote from "./DeleteNote";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { deleteNote } from "../../actions";
 
 import "./NoteView.css";
 
-export default class NoteView extends React.Component {
+class NoteView extends React.Component {
   boolModal = false;
 
   state = {
@@ -14,9 +17,13 @@ export default class NoteView extends React.Component {
     _id: this.props.location.state.note._id
   };
 
-  toggleModal = _ => {
-    this.boolModal = !this.boolModal;
-    this.forceUpdate();
+  // toggleModal = _ => {
+  //   this.boolModal = !this.boolModal;
+  //   this.forceUpdate();
+  // };
+
+  handleDeleteNote = event => {
+    this.props.deleteNote(this.state._id);
   };
 
   componentDidMount() {
@@ -34,15 +41,16 @@ export default class NoteView extends React.Component {
     const notes = this.state;
     return (
       <div className="NoteView">
-        {this.boolModal ? (
-          <div>
+        {/*TODO: Fix Modal / Alert For Deletion */}
+        {/* {this.boolModal ? ( */}
+        {/* <div>
             <DeleteNote
               id={_id}
               toggleModal={this.toggleModal}
-              handleDeleteNote={this.props.handleDeleteNote}
-            />
-          </div>
-        ) : null}
+              handleDeleteNote={this.handleDeleteNote}
+            /> */}
+        {/* </div> */}
+        {/* ) : null} */}
         <div className="NoteView-Links">
           <div>
             <Link
@@ -54,12 +62,14 @@ export default class NoteView extends React.Component {
             </Link>
           </div>
           <div>
-            <a
+            <Link
               className="NoteView-Links-Link"
-              onClick={() => this.toggleModal()}
+              // onClick={() => this.toggleModal()}
+              onClick={this.handleDeleteNote}
+              to={"/"}
             >
               delete
-            </a>
+            </Link>
           </div>
         </div>
         <div>
@@ -70,3 +80,14 @@ export default class NoteView extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    notes: state.notes
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { deleteNote }
+)(NoteView);
