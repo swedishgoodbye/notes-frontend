@@ -16,7 +16,8 @@ export const DELETINGNOTE = "DELETINGNOTE";
 export const DELETEDNOTE = "DELETEDNOTE";
 export const ERROR = "ERROR";
 
-const URL = "http://localhost:27017/api";
+// const URL = "http://localhost:27017/api";
+const URL = "http://localhost:5000/api";
 
 export const logIn = (user, history) => dispatch => {
   localStorage.clear();
