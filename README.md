@@ -1,6 +1,6 @@
 # A Simple Note Taking App  
 
-To fully test the current build, please also follow this link and associated instructions:
+To fully test the current build, please also follow this link and associated instructions:  
 https://github.com/swedishgoodbye/notes-backend  
 **THIS APP IS WORK IN PROGRESS. STABILITY IS NOT ENSURED**
   
