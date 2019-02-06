@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel": "^6.23.0",
+    "jwt-decode": "^2.2.0",
     "react": "^16.7.0",
     "react-csv": "^1.0.19",
     "react-cursor-position": "^3.0.3",

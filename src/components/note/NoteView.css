@@ -6,7 +6,8 @@
   white-space: wrap;
   overflow: hidden;
   text-overflow: clip;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
+  color: white;
 }
 
 .NoteView-Links {
@@ -15,12 +16,12 @@
   align-self: flex-end;
   font-weight: bold;
   text-decoration: underline;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .NoteView-Links-Link {
   cursor: pointer;
   text-decoration: underline;
-  color: rgba(0,0,0,0.8);
+  color: white;
   margin-right: 15px;
 }
