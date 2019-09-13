@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { logIn } from "../../actions";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {logIn} from '../../actions';
 
-import "./Sidebar.css";
+import './Sidebar.css';
 
 class Login extends React.Component {
   state = {
-    username: "",
-    password: ""
+    username: '',
+    password: '',
   };
 
   handleInputChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState ({[event.target.name]: event.target.value});
   };
 
   handleSubmit = event => {
@@ -21,23 +21,23 @@ class Login extends React.Component {
     // this.setState({ username: "", password: "" });
     // console.log("log");
 
-    event.preventDefault();
+    event.preventDefault ();
 
-    this.props.logIn(
+    this.props.logIn (
       {
-        username: this.state.username.trim(),
-        password: this.state.password.trim()
+        username: this.state.username.trim (),
+        password: this.state.password.trim (),
       },
       this.props.history
     );
-    this.setState({
-      username: "",
-      password: ""
+    this.setState ({
+      username: '',
+      password: '',
     });
   };
 
-  render() {
-    const { username, password } = this.state;
+  render () {
+    const {username, password} = this.state;
     return (
       <div className="Login">
         <h3 className="Logitle">Enter Your Username and Password To Login:</h3>
@@ -78,11 +78,8 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.users
+    users: state.users,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { logIn }
-)(Login);
+export default connect (mapStateToProps, {logIn}) (Login);

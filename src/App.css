@@ -5,5 +5,7 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
   background: black;
   width: 100%;
-  min-height: 800px;
+  /* min-height: 800px; */
+  height: 98vh;
+  max-height: 100%;
 }

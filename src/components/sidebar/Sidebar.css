@@ -4,22 +4,35 @@
   align-items: center;
   margin: 0px;
   padding: 6px;
-  background: #d8d8d8;
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  background: black;
+  border-right: 1px solid white;
+  height: 100%;
 }
 
 .Sidebar-Title {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   align-self: flex-start;
   margin-left: 7px;
-  color: rgba(0, 0, 0, 0.7);
-  width: 56%;
+  color: White;
+  width: 95%;
   font-weight: 800;
 }
 
 .login-submit {
   color: white;
   border: 1px solid white;
+}
+
+.sidebar-button {
+  background: black;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 1px solid white;
+}
+
+.sidebar-button:hover {
+  background: white;
+  color: black;
 }

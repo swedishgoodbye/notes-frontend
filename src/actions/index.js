@@ -1,110 +1,126 @@
-import axios from "axios";
+import axios from 'axios';
 
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
-export const FINDINGNOTES = "FINDINGNOTES";
-export const FOUNDNOTES = "FOUNDNOTES";
-export const ADDINGNOTE = "ADDINGNOTE";
-export const ADDEDNOTE = "ADDEDNOTE";
-export const EDITINGNOTE = "EDITINGNOTE";
-export const EDITEDNOTE = "EDITEDNOTE";
-export const LOGGINGIN = "LOGGINGIN";
-export const LOGGEDIN = "LOGGEDIN";
-export const LOGGINGOUT = "LOGGINGOUT";
-export const LOGGEDOUT = "LOGGEDOUT";
-export const DELETINGNOTE = "DELETINGNOTE";
-export const DELETEDNOTE = "DELETEDNOTE";
-export const ERROR = "ERROR";
+export const FINDINGNOTES = 'FINDINGNOTES';
+export const FOUNDNOTES = 'FOUNDNOTES';
+export const ADDINGNOTE = 'ADDINGNOTE';
+export const ADDEDNOTE = 'ADDEDNOTE';
+export const EDITINGNOTE = 'EDITINGNOTE';
+export const EDITEDNOTE = 'EDITEDNOTE';
+export const LOGGINGIN = 'LOGGINGIN';
+export const LOGGEDIN = 'LOGGEDIN';
+export const LOGGINGOUT = 'LOGGINGOUT';
+export const LOGGEDOUT = 'LOGGEDOUT';
+export const REGISTERINGUSER = 'REGISTERINGUSER';
+export const REGISTEREDUSER = 'REGISTEREDUSER';
+export const DELETINGNOTE = 'DELETINGNOTE';
+export const DELETEDNOTE = 'DELETEDNOTE';
+export const ERROR = 'ERROR';
 
 // const URL = "http://localhost:27017/api";
-const URL = "http://localhost:5000/api";
+const URL = 'http://localhost:5000/api';
 
 export const logIn = (user, history) => dispatch => {
-  localStorage.clear();
+  localStorage.clear ();
   axios
-    .post(`${URL}/l`, {
+    .post (`${URL}/l`, {
       username: user.username,
-      password: user.password
+      password: user.password,
     })
-    .then(res => {
-      console.log("RES", res);
-      const { token } = res.data;
-      localStorage.setItem("jwtToken", token);
+    .then (res => {
+      console.log ('RES', res);
+      const {token} = res.data;
+      localStorage.setItem ('jwtToken', token);
 
-      const decoded_token = jwt_decode(token);
-      dispatch({ type: LOGGEDIN, payload: decoded_token });
+      const decoded_token = jwt_decode (token);
+      dispatch ({type: LOGGEDIN, payload: decoded_token});
 
-      window.location.reload(true);
+      window.location.reload (true);
     })
-    .catch(err => {
-      dispatch({ type: ERROR, payload: err });
+    .catch (err => {
+      dispatch ({type: ERROR, payload: err});
+    });
+};
+
+export const registerUser = newUser => dispatch => {
+  axios
+    .post (`${URL}/r`, {
+      username: newUser.username,
+      password: newUser.password,
+    })
+    .then (res => {
+      console.log ('REG', res);
+    })
+    .catch (err => {
+      dispatch ({type: ERROR, payload: 'Register error'});
     });
 };
 
 export const getNotes = () => dispatch => {
-  dispatch({
-    type: FINDINGNOTES
+  dispatch ({
+    type: FINDINGNOTES,
   });
 
   axios
-    .get(`${URL}/f/notes`)
-    .then(res => {
-      console.log("NOTES IN DB:", res.data.length);
+    .get (`${URL}/f/notes`)
+    .then (res => {
+      console.log ('NOTES IN DB:', res.data.length);
       const all_notes = res.data;
-      dispatch({ type: FOUNDNOTES, notes: res.data });
+      dispatch ({type: FOUNDNOTES, notes: res.data});
     })
-    .catch(err => {
-      dispatch({ type: ERROR, errorMessage: "Error Fetching Notes!" });
+    .catch (err => {
+      dispatch ({type: ERROR, errorMessage: 'Error Fetching Notes!'});
     });
 };
 
 export const addNote = note_data => dispatch => {
-  dispatch({
-    type: ADDINGNOTE
+  dispatch ({
+    type: ADDINGNOTE,
   });
   axios
-    .post(`${URL}/c/note`, {
+    .post (`${URL}/c/note`, {
       title: note_data.title,
-      content: note_data.content
+      content: note_data.content,
     })
-    .then(res => {
-      console.log("Note added:", res.data);
-      dispatch({ type: ADDEDNOTE, notes: res.data });
+    .then (res => {
+      console.log ('Note added:', res.data);
+      dispatch ({type: ADDEDNOTE, notes: res.data});
     })
-    .catch(err => {
-      dispatch({ type: ERROR, errorMessage: "Error creating note..." });
+    .catch (err => {
+      dispatch ({type: ERROR, errorMessage: 'Error creating note...'});
     });
 };
 
 export const editNote = (note_data, noteid) => dispatch => {
-  dispatch({
-    type: EDITINGNOTE
+  dispatch ({
+    type: EDITINGNOTE,
   });
   axios
-    .put(`${URL}/u/${noteid}`, {
+    .put (`${URL}/u/${noteid}`, {
       title: note_data.title,
-      content: note_data.content
+      content: note_data.content,
     })
-    .then(res => {
-      dispatch({
+    .then (res => {
+      dispatch ({
         type: EDITEDNOTE,
-        note_data: res.data
+        note_data: res.data,
       });
     })
-    .catch(err => {
-      dispatch({ type: ERROR, errorMessage: "Error editing note..." });
+    .catch (err => {
+      dispatch ({type: ERROR, errorMessage: 'Error editing note...'});
     });
 };
 
 export const deleteNote = noteid => dispatch => {
-  dispatch({
-    type: DELETINGNOTE
+  dispatch ({
+    type: DELETINGNOTE,
   });
-  axios.delete(`${URL}/d/${noteid}`).then(res => {
-    console.log(noteid);
-    dispatch({
+  axios.delete (`${URL}/d/${noteid}`).then (res => {
+    console.log (noteid);
+    dispatch ({
       type: DELETEDNOTE,
-      id: noteid
+      id: noteid,
     });
   });
   // dispatch({

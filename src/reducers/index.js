@@ -9,10 +9,12 @@ import {
   LOGGEDIN,
   LOGGINGOUT,
   LOGGEDOUT,
+  REGISTEREDUSER,
+  REGISTERINGUSER,
   DELETEDNOTE,
   DELETINGNOTE,
-  ERROR
-} from "../actions";
+  ERROR,
+} from '../actions';
 
 const initialState = {
   notes: [],
@@ -22,7 +24,7 @@ const initialState = {
   editingNote: false,
   loggingIn: false,
   loggingOut: false,
-  deletingNote: false
+  deletingNote: false,
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -30,68 +32,72 @@ export const Reducer = (state = initialState, action) => {
     case FINDINGNOTES:
       return {
         ...state,
-        findingNotes: true
+        findingNotes: true,
       };
     case FOUNDNOTES:
       return {
         ...state,
         notes: action.notes,
-        findingNotes: false
+        findingNotes: false,
       };
     case ADDINGNOTE:
       return {
         ...state,
-        addingNote: true
+        addingNote: true,
       };
     case ADDEDNOTE:
       return {
         ...state,
-        addingNote: false
+        addingNote: false,
       };
     case EDITINGNOTE:
       return {
         ...state,
-        editingNote: true
+        editingNote: true,
       };
     case EDITEDNOTE:
       return {
         ...state,
         // notes: action.notes,
-        editingNote: false
+        editingNote: false,
       };
     case DELETINGNOTE:
       return {
         ...state,
-        deletingNote: true
+        deletingNote: true,
       };
     case DELETEDNOTE:
       return {
         ...state,
         // log: console.log(state.notes.filter(item => item._id !== action.id)),
-        notes: state.notes.filter(note => note._id !== action.id),
-        deletingNotes: false
+        notes: state.notes.filter (note => note._id !== action.id),
+        deletingNotes: false,
       };
     case LOGGINGIN:
       return {
         ...state,
-        logginIn: true
+        logginIn: true,
       };
     case LOGGEDIN:
       return {
         ...state,
         authed: true,
-        user: action.payload
+        user: action.payload,
       };
     case LOGGINGOUT:
-      return { ...state, loggingOut: true };
+      return {...state, loggingOut: true};
     case LOGGEDOUT:
       return {
         ...state,
         authed: false,
-        loggingOut: false
+        loggingOut: false,
       };
+    case REGISTERINGUSER:
+      return {...state, registerUser: true};
+    case REGISTEREDUSER:
+      return {...state, registerUser: false};
     case Error:
-      return { ...state, error: action.errorMessage };
+      return {...state, error: action.errorMessage};
     default:
       return state;
   }

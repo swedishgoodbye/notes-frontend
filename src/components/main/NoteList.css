@@ -65,4 +65,23 @@
   border: 1px solid white;
   width: 90%;
   height: 90%;
+  overflow: hidden;
+  padding: 3%;
+}
+
+.note-inner-wrapper:hover {
+  color: black;
+  background: white;
+}
+
+.note-title {
+  border-bottom: 1px solid white;
+  align-self: center;
+  height: 15%;
+  margin-bottom: 2%;
+}
+
+.note-content {
+  height: 75%;
+  overflow: hidden;
 }
